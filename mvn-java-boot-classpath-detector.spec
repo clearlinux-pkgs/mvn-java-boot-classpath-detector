@@ -4,14 +4,18 @@
 #
 Name     : mvn-java-boot-classpath-detector
 Version  : 1.15
-Release  : 1
+Release  : 2
 URL      : https://repo1.maven.org/maven2/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.jar
 Source0  : https://repo1.maven.org/maven2/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.jar
-Source1  : https://repo1.maven.org/maven2/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.pom
+Source1  : https://repo1.maven.org/maven2/org/codehaus/mojo/java-boot-classpath-detector/1.14/java-boot-classpath-detector-1.14.jar
+Source2  : https://repo1.maven.org/maven2/org/codehaus/mojo/java-boot-classpath-detector/1.14/java-boot-classpath-detector-1.14.pom
+Source3  : https://repo1.maven.org/maven2/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT
 Requires: mvn-java-boot-classpath-detector-data = %{version}-%{release}
+BuildRequires : apache-maven
+BuildRequires : buildreq-mvn
 
 %description
 No detailed description available
@@ -25,15 +29,22 @@ data components for the mvn-java-boot-classpath-detector package.
 
 
 %prep
+%setup -q -n META-INF
 
 %build
 
 %install
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15
-cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15
+cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.14
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.14/java-boot-classpath-detector-1.14.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.14
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.14/java-boot-classpath-detector-1.14.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.pom
 
 
 %files
@@ -41,5 +52,7 @@ cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/java-
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.14/java-boot-classpath-detector-1.14.jar
+/usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.14/java-boot-classpath-detector-1.14.pom
 /usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.jar
 /usr/share/java/.m2/repository/org/codehaus/mojo/java-boot-classpath-detector/1.15/java-boot-classpath-detector-1.15.pom
